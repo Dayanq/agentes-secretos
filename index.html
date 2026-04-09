@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agentes Secretos</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+
+  <!-- PANTALLA DE LOGIN -->
+  <div id="pantalla-login">
+    <div class="login-box">
+      <h1>🕵️ Agentes Secretos</h1>
+      <p>Ingresa tu nombre para jugar</p>
+      <input type="text" id="nombre-jugador" placeholder="Tu nombre" maxlength="20">
+      <div class="g-recaptcha" data-sitekey="6LejO68sAAAAAAyyoY3Rp7HRKOsQinI1a-nyJdHt"></div>
+      <button onclick="iniciarJuego()">¡Jugar!</button>
+      <p id="error-login" style="color:red; display:none">
+        Completa el captcha y escribe tu nombre
+      </p>
+    </div>
+  </div>
+
+  <!-- PANTALLA DEL JUEGO -->
+  <div id="pantalla-juego" style="display:none">
+    <div id="hud">
+      <span>🕵️ <span id="nombre-display"></span></span>
+      <span>❤️ Vida: <span id="vida-display">100</span>%</span>
+      <span>⭐ Puntos: <span id="puntos-display">0</span></span>
+      <span>🏰 Nivel: <span id="nivel-display">1</span></span>
+    </div>
+    <canvas id="canvas-juego" width="800" height="500"></canvas>
+  </div>
+
+  <!-- PANTALLA DE GAME OVER -->
+  <div id="pantalla-gameover" style="display:none">
+    <div class="login-box">
+      <h2 id="mensaje-gameover">💀 Game Over</h2>
+      <p>Puntuación final: <span id="puntos-finales">0</span></p>
+      <button onclick="reiniciarJuego()">🔄 Volver a jugar</button>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
