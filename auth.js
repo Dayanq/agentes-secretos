@@ -9,18 +9,16 @@ function iniciarJuego() {
 
   // Guardar nombre
   localStorage.setItem('jugador', nombre);
-  document.getElementById('nombre-display').textContent = nombre;
 
-  // Cambiar pantallas
+  // Mostrar saludo en pantalla de modo
+  document.getElementById('saludo-modo').textContent = `Hola, ${nombre} 👋 ¿Cómo quieres jugar?`;
+
+  // Cambiar a pantalla de modo (no al juego directo)
   document.getElementById('pantalla-login').style.display = 'none';
-  document.getElementById('pantalla-juego').style.display = 'flex';
-
-  // Iniciar el juego
-  iniciar();
+  document.getElementById('pantalla-modo').style.display = 'flex';
 }
 
 function reiniciarJuego() {
   document.getElementById('pantalla-gameover').style.display = 'none';
-  document.getElementById('pantalla-juego').style.display = 'flex';
-  iniciar();
+  document.getElementById('pantalla-modo').style.display = 'flex';
 }

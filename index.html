@@ -15,20 +15,69 @@
       <p>Ingresa tu nombre para jugar</p>
       <input type="text" id="nombre-jugador" placeholder="Tu nombre" maxlength="20">
       <div class="g-recaptcha" data-sitekey="6LejO68sAAAAAAyyoY3Rp7HRKOsQinI1a-nyJdHt"></div>
-      <button onclick="iniciarJuego()">¡Jugar!</button>
+      <button onclick="iniciarJuego()">¡Continuar!</button>
       <p id="error-login" style="color:red; display:none">
         Completa el captcha y escribe tu nombre
       </p>
     </div>
   </div>
 
+  <!-- PANTALLA DE MODO DE JUEGO -->
+  <div id="pantalla-modo" style="display:none">
+    <div class="login-box">
+      <h2>🎮 Modo de juego</h2>
+      <p id="saludo-modo"></p>
+
+      <button class="btn-modo" onclick="seleccionarModo('solo')">
+        🕵️ Solo
+        <span>Un jugador · Un agente</span>
+      </button>
+
+      <button class="btn-modo" onclick="seleccionarModo('multi')">
+        🕵️🕵️‍♀️ Multijugador
+        <span>Dos jugadores · Dos agentes</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- PANTALLA NOMBRES AGENTES (multijugador) -->
+  <div id="pantalla-nombres" style="display:none">
+    <div class="login-box">
+      <h2>🕵️ Nombres de agentes</h2>
+      <div class="nombre-agente-row">
+        <span>Agente 1 (A / D)</span>
+        <input type="text" id="nombre-agente1" placeholder="Nombre agente 1" maxlength="15">
+      </div>
+      <div class="nombre-agente-row">
+        <span>Agente 2 (← →)</span>
+        <input type="text" id="nombre-agente2" placeholder="Nombre agente 2" maxlength="15">
+      </div>
+      <button onclick="confirmarNombres()">¡Jugar!</button>
+      <p id="error-nombres" style="color:red; display:none">Escribe los dos nombres</p>
+    </div>
+  </div>
+
   <!-- PANTALLA DEL JUEGO -->
   <div id="pantalla-juego" style="display:none">
     <div id="hud">
-      <span>🕵️ <span id="nombre-display"></span></span>
-      <span>❤️ Vida: <span id="vida-display">100</span>%</span>
-      <span>⭐ Puntos: <span id="puntos-display">0</span></span>
-      <span>🏰 Nivel: <span id="nivel-display">1</span></span>
+      <span class="hud-agente">
+        🕵️ <span id="nombre-a1-display"></span>
+        &nbsp;❤️ <span id="vida-a1-display">100%</span>
+      </span>
+      <span class="hud-centro">
+        ⭐ <span id="puntos-display">0</span>
+        &nbsp;&nbsp;
+        🏰 Nivel <span id="nivel-display">1</span>
+      </span>
+      <span class="hud-botones">
+        <button class="btn-hud" onclick="pausarJuego()" id="btn-pausa">⏸</button>
+        <button class="btn-hud" onclick="reanudarJuego()" id="btn-reanudar" style="display:none">▶️</button>
+        <button class="btn-hud" onclick="reiniciarDesdeJuego()">🔄</button>
+      </span>
+      <span class="hud-agente" id="hud-agente2">
+        🕵️‍♀️ <span id="nombre-a2-display"></span>
+        &nbsp;❤️ <span id="vida-a2-display">100%</span>
+      </span>
     </div>
     <canvas id="canvas-juego" width="800" height="500"></canvas>
   </div>
